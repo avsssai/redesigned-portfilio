@@ -8,6 +8,9 @@ const styles = makeStyles((theme) => ({
 		alignContent: "center",
 		color: theme.palette.grey["100"],
 		fontFamily: theme.typography.fontFamily,
+		[theme.breakpoints.down("xs")]: {
+			padding: theme.spacing(1),
+		},
 	},
 	iconName: {
 		fontSize: theme.typography.h6.fontSize,
