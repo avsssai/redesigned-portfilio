@@ -16,6 +16,10 @@ const styles = makeStyles((theme) => ({
 		fontSize: theme.typography.h6.fontSize,
 		display: "flex",
 		alignItems: "center",
+		"& a": {
+			color: "inherit",
+			textDecoration: "none",
+		},
 	},
 	navCluster: {
 		display: "flex",
@@ -24,6 +28,10 @@ const styles = makeStyles((theme) => ({
 	},
 	nav: {
 		paddingRight: theme.spacing(4),
+		"& a": {
+			color: "inherit",
+			textDecoration: "none",
+		},
 	},
 	aboveSmall: {
 		display: "flex",

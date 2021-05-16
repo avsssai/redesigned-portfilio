@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Container, Grid, Typography, Button } from "@material-ui/core";
 import useStyles from "./styles";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -17,13 +18,15 @@ const Home = () => {
 					</span>
 				</div>
 				<div className={classes.buttonTray}>
-					<Button
-						variant='outlined'
-						color='secondary'
-						className={classes.homePageButton}
-						size='medium'>
-						Read my blog
-					</Button>
+					<Link to='/blog'>
+						<Button
+							variant='outlined'
+							color='secondary'
+							className={classes.homePageButton}
+							size='medium'>
+							Read my blog
+						</Button>
+					</Link>
 					<Button
 						variant='outlined'
 						color='secondary'
