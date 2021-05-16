@@ -1,9 +1,4 @@
-import {
-	FETCHING_BEGIN,
-	FETCHING_END,
-	FETCH_ALL,
-	ADD_BLOG,
-} from "../actionTypes";
+import { FETCHING_BEGIN, FETCHING_END, FETCH_ALL, ADD_BLOG } from "../actionTypes";
 
 import * as api from "../api";
 

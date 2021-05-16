@@ -11,7 +11,7 @@ let initialState = {
 	error: null,
 };
 
-export default (state = initialState, action) => {
+const blogs = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING_BEGIN:
 			return { ...state, loading: true };
@@ -29,3 +29,5 @@ export default (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default blogs;

@@ -4,7 +4,7 @@ const styles = makeStyles((theme) => ({
 	navbar: {
 		display: "flex",
 		justifyContent: "space-between",
-		padding: theme.spacing(3),
+		padding: theme.spacing(4),
 		alignContent: "center",
 		color: theme.palette.grey["100"],
 		fontFamily: theme.typography.fontFamily,

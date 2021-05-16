@@ -9,7 +9,7 @@ const styles = makeStyles((theme) => ({
 	main: {
 		minHeight: "70vh",
 		display: "flex",
-		marginTop: "10vh",
+		marginTop: "20vh",
 		flexDirection: "column",
 		fontFamily: theme.typography.fontFamily,
 		color: theme.palette.grey["500"],
@@ -62,7 +62,7 @@ const styles = makeStyles((theme) => ({
 	},
 	blogTitleContainer: {
 		color: theme.palette.grey["600"],
-		fontSize: theme.typography.h5.fontSize,
+		fontSize: theme.typography.h6.fontSize,
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.body2.fontSize,
 		},
@@ -72,7 +72,7 @@ const styles = makeStyles((theme) => ({
 		borderBottom: `1px dotted ${theme.palette.secondary.main}`,
 		width: "fit-content",
 		marginBottom: theme.spacing(1),
-		fontSize: theme.typography.h4.fontSize,
+		fontSize: theme.typography.h5.fontSize,
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h6.fontSize,
 		},

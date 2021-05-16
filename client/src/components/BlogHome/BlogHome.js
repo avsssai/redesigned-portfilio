@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Paper, Typography, Grid } from "@material-ui/core";
 import { getAllBlogs } from "../../actions/blogs";
 import { Link } from "react-router-dom";
-
+import moment from "moment";
 import useStyles from "./styles";
 
 const BlogHome = () => {
@@ -20,15 +20,24 @@ const BlogHome = () => {
 				<div className={classes.backToHome}>
 					<Link to='/'>&#8592; Return to 🏡 Home</Link>
 				</div>
-				<Typography variant='h3'>Blog Home</Typography>
 				<div className={classes.blogsContainer}>
-					<Grid container spacing={3}>
+					<Grid container spacing={3} justify='center' alignItems='stretch'>
 						{!blogs
 							? "Loading..."
 							: blogs.map((blog) => (
-									<Grid item xs={10} md={8}>
+									<Grid item xs={12} md={8} key={blog.searchString}>
 										<Paper className={classes.paper}>
-											{blog.title}
+											<Grid container justify='space-between' alignItems='stretch' spacing={2}>
+												<Grid item xs={11} sm={8}>
+													<div className={classes.blogTitle}>{blog.title}</div>
+												</Grid>
+												<Grid item xs={11} sm={3} className={classes.blogInfo}>
+													<div className={classes.blogTag}>{blog.tags[1]}</div>
+													<div className={classes.blogDate}>
+														{moment(blog.date).fromNow()}
+													</div>
+												</Grid>
+											</Grid>
 										</Paper>
 									</Grid>
 							  ))}
