@@ -9,7 +9,7 @@ const styles = makeStyles((theme) => ({
 	main: {
 		minHeight: "70vh",
 		display: "flex",
-		marginTop: "20vh",
+		marginTop: "10vh",
 		flexDirection: "column",
 		fontFamily: theme.typography.fontFamily,
 		color: theme.palette.grey["500"],
@@ -43,6 +43,10 @@ const styles = makeStyles((theme) => ({
 	},
 	buttonTray: {
 		marginTop: theme.spacing(5),
+		"& a": {
+			color: "inherit",
+			textDecoration: "none",
+		},
 	},
 	homePageButton: {
 		marginRight: theme.spacing(2),
