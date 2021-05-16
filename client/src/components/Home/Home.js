@@ -33,6 +33,17 @@ const Home = () => {
 					</Button>
 				</div>
 			</Container>
+			<div className={classes.addInfo}>
+				<Container>
+					<div className={classes.subscribe}>
+						Subscribe to my weekly newsletter!
+					</div>
+					<div className={classes.blogTitleContainer}>
+						My aim is to blog daily. This way I would be able to
+						cement my learning as well as share my knowledge.
+					</div>
+				</Container>
+			</div>
 		</div>
 	);
 };

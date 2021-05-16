@@ -1,8 +1,6 @@
 import React from "react";
-import { Container, Toolbar, AppBar, Grid } from "@material-ui/core";
-import AcUnitIcon from "@material-ui/icons/AcUnit";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Container, Grid } from "@material-ui/core";
+import Menu from "../Menu/Menu";
 
 import useStyles from "./styles.js";
 const Navbar = () => {
@@ -20,22 +18,10 @@ const Navbar = () => {
 						</div>
 					</div>
 					<div className={classes.belowSmall}>
-						<IconButton color='inherit'>
-							<MenuIcon />
-						</IconButton>
+						<Menu />
 					</div>
 				</Grid>
 			</Grid>
-			{/* <AppBar>
-				<Toolbar>
-					<AcUnitIcon
-						edge='start'
-						color='inherit'
-						aria-label='menu'
-					/>
-				</Toolbar>
-			</AppBar>
-			<Toolbar /> */}
 		</Container>
 	);
 };
