@@ -6,6 +6,7 @@ const styles = makeStyles((theme) => ({
 		justifyContent: "space-between",
 		padding: theme.spacing(4),
 		alignContent: "center",
+		fontWeight: theme.typography.fontWeightBold,
 		color: theme.palette.grey["100"],
 		fontFamily: theme.typography.fontFamily,
 		[theme.breakpoints.down("xs")]: {

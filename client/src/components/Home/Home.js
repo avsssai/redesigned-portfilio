@@ -9,7 +9,7 @@ const Home = () => {
 	return (
 		<div className={classes.main}>
 			<Container fixed>
-				<div className={classes.intro}>Hi, I am Siva,</div>
+				<div className={classes.intro}>Hi👋, I am Siva,</div>
 				<div className={classes.job}>I make websites.</div>
 				<div className={classes.subText}>
 					UI/UX developer, tech enthusiast and movie buff. <br />
@@ -30,8 +30,7 @@ const Home = () => {
 				<Container fixed>
 					<div className={classes.subscribe}>Subscribe to my weekly newsletter!</div>
 					<div className={classes.blogTitleContainer}>
-						My aim is to blog daily. This way I would be able to cement my learning as well as share my
-						knowledge.
+						I write a blog daily, subscribe to get weekly updates!
 					</div>
 				</Container>
 			</div>

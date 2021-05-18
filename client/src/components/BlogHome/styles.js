@@ -21,6 +21,14 @@ const styles = makeStyles((theme) => ({
 	blogTitle: {
 		fontSize: theme.typography.h6.fontSize,
 		fontWeight: theme.typography.fontWeightBold,
+
+		"& a": {
+			textDecoration: "none",
+			color: "inherit",
+		},
+		"& a:hover": {
+			borderBottom: "1px dotted white",
+		},
 	},
 	blogInfo: {
 		display: "flex",

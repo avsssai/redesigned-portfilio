@@ -29,7 +29,9 @@ const BlogHome = () => {
 										<Paper className={classes.paper}>
 											<Grid container justify='space-between' alignItems='stretch' spacing={2}>
 												<Grid item xs={11} sm={8}>
-													<div className={classes.blogTitle}>{blog.title}</div>
+													<div className={classes.blogTitle}>
+														<Link to={`/blog/${blog.searchString}`}>{blog.title}</Link>
+													</div>
 												</Grid>
 												<Grid item xs={11} sm={3} className={classes.blogInfo}>
 													<div className={classes.blogTag}>{blog.tags[1]}</div>

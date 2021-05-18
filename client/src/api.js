@@ -5,5 +5,5 @@ const API = axios.create({
 });
 
 export const getAll = () => API.get("/blogs/all");
-export const getBlog = (id) => API.get(`/blogs/blog/${id}`);
+export const getBlog = (searchString) => API.get(`/blogs/blog/${searchString}`);
 export const addBlog = (formData) => API.post(`/blogs/blog`, formData);

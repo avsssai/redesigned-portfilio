@@ -15,14 +15,15 @@ export const allBlogs = async (req, res) => {
 
 export const getBlog = async (req, res) => {
 	try {
-		const { id } = req.params;
-		const blog = await Blog.findById(id);
+		const { searchString } = req.params;
+		console.log(req.params);
+		const blog = await Blog.findOne({ searchString });
 		if (!blog) {
-			res.status(404).json({
+			return res.status(404).json({
 				message: "No Blog found",
 			});
 		}
-		res.status(200).json({
+		return res.status(200).json({
 			message: "Blog Found.",
 			blog,
 		});

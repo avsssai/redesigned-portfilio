@@ -26,7 +26,7 @@ const styles = makeStyles((theme) => ({
 	job: {
 		fontSize: theme.typography.h1.fontSize,
 		color: theme.palette.secondary.main,
-		fontFamily: theme.typography.fontFamily,
+		fontFamily: theme.typography.importedFontFamily,
 		fontWeight: theme.typography.fontWeightMedium,
 		marginBottom: theme.spacing(3),
 		marginTop: theme.spacing(3),
@@ -69,6 +69,8 @@ const styles = makeStyles((theme) => ({
 	},
 	subscribe: {
 		color: theme.palette.grey["200"],
+		fontFamily: theme.typography.importedFontFamily,
+
 		borderBottom: `1px dotted ${theme.palette.secondary.main}`,
 		width: "fit-content",
 		marginBottom: theme.spacing(1),

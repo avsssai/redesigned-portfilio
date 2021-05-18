@@ -12,6 +12,9 @@ const theme = createMuiTheme({
 	palette: {
 		type: "dark",
 	},
+	typography: {
+		importedFontFamily: '"Rozha One", serif',
+	},
 });
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));

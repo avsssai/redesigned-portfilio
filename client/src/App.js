@@ -7,6 +7,7 @@ import MyEditor from "./components/Editor/Editor";
 import Contact from "./components/Contact/Contact";
 import Work from "./components/Work/Work";
 import BlogHome from "./components/BlogHome/BlogHome";
+import Blog from "./components/Blog/Blog";
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 						<Route exact path='/contact' component={Contact} />
 						<Route exact path='/my-work' component={Work} />
 						<Route exact path='/blog' component={BlogHome} />
+						<Route exact path='/blog/:searchString' component={Blog} />
 					</Switch>
 				</Container>
 			</Router>
