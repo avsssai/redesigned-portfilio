@@ -14,11 +14,11 @@ const blog = (state = initialState, action) => {
 				loading: false,
 				blog: action.payload,
 			};
-		case FETCH_ONE:
+		case REMOVE_BLOG:
 			return {
 				...state,
 				loading: false,
-				blog: action.payload,
+				blog: {},
 			};
 		default:
 			return state;

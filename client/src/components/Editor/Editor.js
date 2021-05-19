@@ -53,7 +53,6 @@ const MyEditor = (props) => {
 			content,
 		};
 		dispatch(addBlog(fullFormData));
-		console.log(fullFormData, draftToHtml(JSON.parse(content)));
 	};
 	return (
 		<div className='main-container'>

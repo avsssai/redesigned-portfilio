@@ -13,7 +13,8 @@ const BlogHome = () => {
 	}, []);
 	const classes = useStyles();
 	const blogs = useSelector((state) => state.blogs.blogs.blogs);
-	console.log("blogs", blogs);
+	const blog = useSelector((state) => state.blog.blog.blog);
+	console.log("BLOG IN USE", blog);
 	return (
 		<div className={classes.blogHome}>
 			<Container>

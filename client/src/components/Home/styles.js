@@ -13,8 +13,12 @@ const styles = makeStyles((theme) => ({
 		flexDirection: "column",
 		fontFamily: theme.typography.fontFamily,
 		color: theme.palette.grey["500"],
+		[theme.breakpoints.down("lg")]: {
+			marginTop: "10vh",
+		},
+
 		[theme.breakpoints.down("xs")]: {
-			marginTop: "15vh",
+			marginTop: "5vh",
 		},
 	},
 	intro: {
@@ -28,10 +32,11 @@ const styles = makeStyles((theme) => ({
 		color: theme.palette.secondary.main,
 		fontFamily: theme.typography.importedFontFamily,
 		fontWeight: theme.typography.fontWeightMedium,
-		marginBottom: theme.spacing(3),
-		marginTop: theme.spacing(3),
+		marginBottom: theme.spacing(2),
+		marginTop: theme.spacing(2),
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h2.fontSize,
+			lineHeight: "1.1",
 		},
 	},
 	subText: {
