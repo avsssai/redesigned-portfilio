@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 const styles = makeStyles((theme) => ({
 	blogContainer: {
 		marginTop: theme.spacing(6),
+		fontFamily: theme.typography.fontFamily,
 	},
 	blogTitle: {
 		fontFamily: theme.typography.importedFontFamily,
@@ -11,9 +12,15 @@ const styles = makeStyles((theme) => ({
 	},
 	blogDetails: {
 		marginTop: theme.spacing(3),
-		marginBottom: theme.spacing(3),
+		marginBottom: "4rem",
 		display: "flex",
 		justifyContent: "space-between",
+		alignItems: "baseline",
+	},
+	blogDate: {
+		alignSelf: "baseline",
+		color: theme.palette.grey["200"],
+		fontWeight: theme.typography.fontWeightBold,
 	},
 	blogTags: {
 		display: "flex",

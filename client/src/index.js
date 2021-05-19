@@ -14,6 +14,10 @@ const theme = createMuiTheme({
 	},
 	typography: {
 		importedFontFamily: '"Rozha One", serif',
+		fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif,"Segoe UI"`,
+		body2: {
+			fontSize: "16px",
+		},
 	},
 });
 
@@ -22,6 +26,7 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)));
 ReactDOM.render(
 	<Provider store={store}>
 		<ThemeProvider theme={theme}>
+			<CssBaseline />
 			<App />
 		</ThemeProvider>
 	</Provider>,

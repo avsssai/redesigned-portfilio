@@ -1,4 +1,29 @@
 .react {
 	background: #61dafb;
 	border: 1px dotted #61dafb;
+	color: black;
+}
+
+.nextjs {
+	background: white;
+	border: 1px dotted white;
+	color: black;
+}
+
+.html {
+	background: #dd4b25;
+	border: 1px dotted #dd4b25;
+	color: black;
+}
+
+.css {
+	background: #1f5faa;
+	border: 1px dotted #1f5faa;
+	color: black;
+}
+
+.python {
+	background: #3673a8;
+	border: 1px dotted #f7bd2f;
+	color: #f7bd2f;
 }

@@ -28,7 +28,7 @@ const Blog = () => {
 				<Container fixed className={classes.blogContainer} maxWidth='md'>
 					<div className={classes.blogTitle}>{blog.title}</div>
 					<div className={classes.blogDetails}>
-						<div className={classes.blogDate}>{moment(blog.date).fromNow()}</div>
+						<div className={classes.blogDate}>Published {moment(blog.date).fromNow()}</div>
 						<div className={classes.blogTags}>
 							{blog.tags.map((tag) => (
 								<BlogTag key={tag} tag={tag} />

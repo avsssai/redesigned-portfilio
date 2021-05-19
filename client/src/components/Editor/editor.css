@@ -7,6 +7,9 @@
 	font-size: 16px;
 }
 
+.rdw-editor-toolbar {
+	color: black;
+}
 .MuiDivider-light {
 	margin: 2rem 0;
 }
