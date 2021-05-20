@@ -7,7 +7,7 @@ import "./editor.css";
 import useStyles from "./styles.js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Button, Container, Divider, TextField, Typography } from "@material-ui/core";
-import { ADD_BLOG } from "../../actionTypes";
+import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { addBlog } from "../../actions/blogs";
 
@@ -54,9 +54,36 @@ const MyEditor = (props) => {
 		};
 		dispatch(addBlog(fullFormData));
 	};
+
+	const googleSuccess = async (res) => {
+		const token = res?.tokenId;
+		const result = res?.profileObj;
+		console.log("TOKEN", token);
+		console.log("PROFILE", result);
+	};
+	const googleFailure = () => {
+		console.log("Google login failed.");
+	};
 	return (
 		<div className='main-container'>
 			<Container maxWidth='md'>
+				<GoogleLogin
+					clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+					cookiePolicy={"single_host_origin"}
+					onSuccess={googleSuccess}
+					onFailure={googleFailure}
+					render={(renderProps) => (
+						<Button
+							className={classes.googleButton}
+							color='primary'
+							fullWidth
+							onClick={renderProps.onClick}
+							disabled={renderProps.disabled}
+							variant='contained'>
+							Google Sign In
+						</Button>
+					)}
+				/>
 				<form onSubmit={handleSubmit} className={classes.form}>
 					<Typography variant='h4' color='secondary'>
 						Add a New Blog

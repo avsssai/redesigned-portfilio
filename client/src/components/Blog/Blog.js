@@ -80,7 +80,7 @@ const Blog = () => {
 	);
 };
 
-setTimeout(() => Prism.highlightAll(), 0);
+// setTimeout(() => Prism.highlightAll(), 0);
 
 export default Blog;
 

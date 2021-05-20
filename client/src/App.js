@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import { Container } from "@material-ui/core";
