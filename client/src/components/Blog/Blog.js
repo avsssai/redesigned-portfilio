@@ -1,16 +1,18 @@
-import { Container } from "@material-ui/core";
-import React, { Children, useEffect } from "react";
+import { Container, Divider } from "@material-ui/core";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getBlog } from "../../actions/blog";
 import { REMOVE_BLOG } from "../../actionTypes";
 import BlogTag from "./BlogTag/BlogTag";
 import draftToHtml from "draftjs-to-html";
-import parse, { attributesToProps, domToReact } from "html-react-parser";
+import parse, { domToReact } from "html-react-parser";
 import useStyles from "./styles";
 import moment from "moment";
 import Prism from "prismjs";
 import { useLocation } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 import "./prism.css";
 
 const Blog = () => {
@@ -53,6 +55,12 @@ const Blog = () => {
 		<div>
 			{blog ? (
 				<Container fixed className={classes.blogContainer} maxWidth='md'>
+					<div className={classes.goBack}>
+						<Link to='/blog'>
+							<ArrowBackIcon />
+							Go back to all blogs
+						</Link>
+					</div>
 					<div className={classes.blogTitle}>{blog.title}</div>
 					<div className={classes.blogDetails}>
 						<div className={classes.blogDate}>Published {moment(blog.date).fromNow()}</div>
@@ -62,6 +70,7 @@ const Blog = () => {
 							))}
 						</div>
 					</div>
+					<Divider />
 					<div className={classes.blogContent}>{parse(draftToHtml(JSON.parse(blog.content)), options)}</div>
 				</Container>
 			) : (
