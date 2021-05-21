@@ -5,8 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
 
 import useStyles from "./styles.js";
-const Navbar = () => {
+const Navbar = ({ home }) => {
 	const classes = useStyles();
+	if (home) {
+		return null;
+	}
 	return (
 		<Container>
 			<Grid container>
