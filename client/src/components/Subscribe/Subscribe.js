@@ -7,6 +7,12 @@ import useStyles from "./styles";
 import "./styles.css";
 import * as api from "../../api";
 
+const initialState = {
+	firstName: "",
+	lastName: "",
+	email: "",
+};
+
 const Subscribe = () => {
 	const classes = useStyles();
 	const [formData, setFormData] = useState({
@@ -14,13 +20,14 @@ const Subscribe = () => {
 		lastName: "",
 		email: "",
 	});
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (formData.firstName === "" || formData.lastName === "" || formData.email === "") {
 			toast.info("Please enter all the fields.");
 		} else {
-			toast.info("Added to the mail list!");
-			api.subscribe(formData);
+			const { data } = await api.subscribe(formData);
+			toast.info(data?.message);
+			setFormData(initialState);
 		}
 	};
 	return (

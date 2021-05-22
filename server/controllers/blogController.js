@@ -59,9 +59,9 @@ export const sendEmail = async (req, res) => {
 
 export const subscribeToEmail = async (req, res) => {
 	try {
-		await addContact(req.body);
+		const message = await addContact(req.body);
 		res.status(200).json({
-			message: "Email added to the mail list.",
+			message,
 		});
 	} catch (error) {
 		console.log(error);
