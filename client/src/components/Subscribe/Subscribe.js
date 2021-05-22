@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import { Container, TextField, Divider, Typography, Grid, Button } from "@material-ui/core";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
 
 import useStyles from "./styles";
 import "./styles.css";
-import { SEND_CONTACT_EMAIL } from "../../actionTypes";
 import * as api from "../../api";
 
-const Contact = () => {
+const Subscribe = () => {
 	const classes = useStyles();
 	const [formData, setFormData] = useState({
-		name: "",
+		firstName: "",
+		lastName: "",
 		email: "",
-		content: "",
 	});
-	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (formData.name === "" || formData.email === "" || formData.content === "") {
+		if (formData.firstName === "" || formData.lastName === "" || formData.email === "") {
 			toast.info("Please enter all the fields.");
 		} else {
-			toast.info("Email sent!");
-			api.sendEmail(formData);
+			toast.info("Added to the mail list!");
+			api.subscribe(formData);
 		}
 	};
 	return (
@@ -33,42 +30,49 @@ const Contact = () => {
 				<Grid container>
 					<Grid item xs={12} md={6} className={classes.gridItem}>
 						<Typography variant='h3' className={classes.contactHeader}>
-							Contact
+							Subscribe to my mail list!
 						</Typography>
 
 						<div className={classes.contactBody}>
-							<div className={classes.formHeader}>
-								<Typography variant='h5'>
-									Please reach me out through this fancy form I made.
-								</Typography>
-							</div>
+							<div className={classes.formHeader}></div>
 						</div>
 						<div>
 							<form onSubmit={handleSubmit} className={classes.form}>
-								<Typography variant='h4' color='secondary'>
-									Reach me out
-								</Typography>
-
 								<Divider orientation='horizontal' className={classes.divider} />
 								<TextField
 									variant='outlined'
-									label='Name'
-									placeholder='Your name'
+									label='First Name'
+									placeholder='Your first name'
 									name='name'
-									value={formData.name}
+									value={formData.firstName}
 									fullWidth
 									className={classes.input}
 									onChange={(e) =>
 										setFormData({
 											...formData,
-											name: e.target.value,
+											firstName: e.target.value,
+										})
+									}
+								/>
+								<TextField
+									variant='outlined'
+									label='Last Name'
+									placeholder='Your last name'
+									name='lastName'
+									value={formData.lastName}
+									fullWidth
+									className={classes.input}
+									onChange={(e) =>
+										setFormData({
+											...formData,
+											lastName: e.target.value,
 										})
 									}
 								/>
 								<TextField
 									variant='outlined'
 									label='Your Email'
-									placeholder='Email'
+									placeholder='Your email address'
 									name='email'
 									value={formData.email}
 									fullWidth
@@ -80,30 +84,12 @@ const Contact = () => {
 										})
 									}
 								/>
-								<TextField
-									variant='outlined'
-									label='Content'
-									placeholder='Content'
-									multiline={true}
-									rowsMax={10}
-									rows={10}
-									name='content'
-									value={formData.content}
-									fullWidth
-									className={classes.input}
-									onChange={(e) =>
-										setFormData({
-											...formData,
-											content: e.target.value,
-										})
-									}
-								/>
 								<Button
 									className={classes.submitButton}
 									variant='contained'
 									color='secondary'
 									type='submit'>
-									Send
+									Subscribe
 								</Button>
 							</form>
 						</div>
@@ -114,4 +100,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default Subscribe;

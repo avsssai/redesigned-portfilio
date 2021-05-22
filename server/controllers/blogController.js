@@ -1,5 +1,6 @@
 import express from "express";
 import Blog from "../models/BlogModel.js";
+import { addContact } from "../utils/mailChimp.js";
 
 export const allBlogs = async (req, res) => {
 	try {
@@ -40,6 +41,27 @@ export const addBlog = async (req, res) => {
 		res.status(201).json({
 			message: "New Blog created successfully.",
 			blog: newBlog,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const sendEmail = async (req, res) => {
+	try {
+		const data = req.body;
+		console.log("hit", data);
+		res.send("email sending successful.");
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const subscribeToEmail = async (req, res) => {
+	try {
+		await addContact(req.body);
+		res.status(200).json({
+			message: "Email added to the mail list.",
 		});
 	} catch (error) {
 		console.log(error);

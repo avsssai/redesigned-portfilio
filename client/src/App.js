@@ -10,6 +10,7 @@ import Work from "./components/Work/Work";
 import BlogHome from "./components/BlogHome/BlogHome";
 import Blog from "./components/Blog/Blog";
 import useStyles from "./AppStyles";
+import Subscribe from "./components/Subscribe/Subscribe";
 
 const App = () => {
 	const classes = useStyles();
@@ -23,6 +24,7 @@ const App = () => {
 						<Route exact path='/editor' component={MyEditor} />
 						<Route exact path='/contact' component={Contact} />
 						<Route exact path='/my-work' component={Work} />
+						<Route exact path='/subscribe' component={Subscribe} />
 						<Route exact path='/blog' component={BlogHome} />
 						<Route exact path='/blog/:searchString' component={Blog} />
 					</Switch>

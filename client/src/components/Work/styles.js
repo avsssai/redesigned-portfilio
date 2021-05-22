@@ -10,7 +10,7 @@ const styles = makeStyles((theme) => ({
 	projectImage: {
 		maxWidth: "100%",
 		maxHeight: "100%",
-		boxShadow: theme.shadows[5],
+		boxShadow: theme.shadows[8],
 		borderRadius: theme.shape.borderRadius,
 	},
 	projectDetails: {
@@ -32,6 +32,10 @@ const styles = makeStyles((theme) => ({
 	},
 	projectItem: {
 		margin: `${theme.spacing(5)} 0`,
+	},
+	moreText: {
+		marginTop: theme.spacing(4),
+		color: theme.palette.secondary.main,
 	},
 }));
 

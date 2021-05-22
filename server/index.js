@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import blogRoutes from "./routes/blogRoutes.js";
 import cors from "cors";
+import morgan from "morgan";
 
 const app = express();
 dotenv.config();
-
+app.use(morgan("dev"));
 app.use(cors());
 
 app.use(express.json({ limit: "30mb", extended: true }));
