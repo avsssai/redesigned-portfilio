@@ -33,7 +33,11 @@ const Home = () => {
 				</Container>
 				<div className={classes.addInfo}>
 					<Container fixed>
-						<div className={classes.subscribe}>Subscribe to my weekly newsletter!</div>
+						<div className={classes.subscribe}>
+							<Link to='/subscribe' className={classes.anchor}>
+								Subscribe to my weekly newsletter!
+							</Link>
+						</div>
 						<div className={classes.blogTitleContainer}>
 							I write a blog daily, subscribe to get weekly updates!
 						</div>

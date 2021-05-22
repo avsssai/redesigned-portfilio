@@ -79,6 +79,10 @@ const styles = makeStyles((theme) => ({
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h6.fontSize,
 		},
+		"& a": {
+			color: "inherit",
+			textDecoration: "none",
+		},
 	},
 }));
 
