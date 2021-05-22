@@ -16,10 +16,6 @@ const styles = makeStyles((theme) => ({
 		[theme.breakpoints.down("lg")]: {
 			marginTop: "10vh",
 		},
-
-		[theme.breakpoints.down("xs")]: {
-			marginTop: "5vh",
-		},
 	},
 	intro: {
 		fontSize: theme.typography.h4.fontSize,
