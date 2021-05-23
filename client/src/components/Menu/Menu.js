@@ -8,15 +8,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-	},
-	paper: {
-		marginRight: theme.spacing(2),
-	},
-}));
+import { Link } from "react-router-dom";
+import useStyles from "./styles";
 
 export default function MenuListComposition() {
 	const classes = useStyles();
@@ -63,35 +56,24 @@ export default function MenuListComposition() {
 					onClick={handleToggle}>
 					<MenuIcon />
 				</Button>
-				<Popper
-					open={open}
-					anchorEl={anchorRef.current}
-					role={undefined}
-					transition
-					disablePortal>
+				<Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
 					{({ TransitionProps, placement }) => (
 						<Grow
 							{...TransitionProps}
 							style={{
-								transformOrigin:
-									placement === "bottom"
-										? "center top"
-										: "center bottom",
+								transformOrigin: placement === "bottom" ? "center top" : "center bottom",
 							}}>
 							<Paper>
 								<ClickAwayListener onClickAway={handleClose}>
-									<MenuList
-										autoFocusItem={open}
-										id='menu-list-grow'
-										onKeyDown={handleListKeyDown}>
-										<MenuItem onClick={handleClose}>
-											Contact
+									<MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
+										<MenuItem onClick={handleClose} className={classes.link}>
+											<Link to='/contact'>Contact</Link>
 										</MenuItem>
-										<MenuItem onClick={handleClose}>
-											My Work
+										<MenuItem onClick={handleClose} className={classes.link}>
+											<Link to='/my-work'>My Work</Link>
 										</MenuItem>
-										<MenuItem onClick={handleClose}>
-											Blog
+										<MenuItem onClick={handleClose} className={classes.link}>
+											<Link to='/blog'>Blog</Link>
 										</MenuItem>
 									</MenuList>
 								</ClickAwayListener>

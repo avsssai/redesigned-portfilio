@@ -38,7 +38,7 @@ const Contact = () => {
 
 						<div className={classes.contactBody}>
 							<div className={classes.formHeader}>
-								<Typography variant='h5'>
+								<Typography variant='body1'>
 									Please reach me out through this fancy form I made.
 								</Typography>
 							</div>

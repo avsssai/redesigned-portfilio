@@ -13,6 +13,7 @@ const styles = makeStyles((theme) => ({
 		flexDirection: "column",
 		fontFamily: theme.typography.fontFamily,
 		color: theme.palette.grey["500"],
+
 		[theme.breakpoints.down("lg")]: {
 			marginTop: "10vh",
 		},
@@ -30,6 +31,8 @@ const styles = makeStyles((theme) => ({
 		fontWeight: theme.typography.fontWeightMedium,
 		marginBottom: theme.spacing(2),
 		marginTop: theme.spacing(2),
+		textShadow: "0px 0px 0 #f50057, -3px 0px 10px #0a0e27",
+
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h2.fontSize,
 			lineHeight: "1.1",

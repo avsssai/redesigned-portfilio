@@ -11,7 +11,7 @@ const Navbar = ({ home }) => {
 		return null;
 	}
 	return (
-		<Container>
+		<Container fluid>
 			<Grid container>
 				<Grid item xs={12} className={classes.navbar}>
 					<div className={classes.iconName}>
