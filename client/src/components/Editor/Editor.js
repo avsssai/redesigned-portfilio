@@ -10,6 +10,7 @@ import { Button, Container, Divider, TextField, Typography } from "@material-ui/
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { addBlog } from "../../actions/blogs";
+import { GOOGLE_LOGIN } from "../../actionTypes";
 
 const MyEditor = (props) => {
 	const [editorContent, setEditorContent] = useState("");
@@ -58,6 +59,11 @@ const MyEditor = (props) => {
 	const googleSuccess = async (res) => {
 		const token = res?.tokenId;
 		const result = res?.profileObj;
+		try {
+			dispatch({ type: GOOGLE_LOGIN, payload: { token, result } });
+		} catch (error) {
+			console.log(error);
+		}
 		console.log("TOKEN", token);
 		console.log("PROFILE", result);
 	};

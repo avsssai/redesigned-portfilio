@@ -5,3 +5,6 @@ export const FETCH_ONE = "FETCH_ONE";
 export const ADD_BLOG = "ADD_BLOG";
 export const REMOVE_BLOG = "REMOVE_BLOG";
 export const SEND_CONTACT_EMAIL = "SEND_CONTACT_EMAIL";
+
+export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
+export const GOOGLE_LOGOUT = "GOOGLE_LOGOUT";
