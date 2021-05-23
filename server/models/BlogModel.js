@@ -9,6 +9,7 @@ const BlogSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
+	author: String,
 	searchString: String,
 	tags: [String],
 });

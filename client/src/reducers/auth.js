@@ -3,7 +3,7 @@ import { GOOGLE_LOGIN, GOOGLE_LOGOUT } from "../actionTypes";
 const auth = (state = { authData: null }, action) => {
 	switch (action.type) {
 		case GOOGLE_LOGIN:
-			localStorage.setItem("profile", JSON.stringify(...action?.payload));
+			localStorage.setItem("profile", JSON.stringify({ ...action?.payload }));
 			console.log("payload??", action?.payload);
 			return {
 				...state,

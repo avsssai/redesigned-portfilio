@@ -1,8 +1,9 @@
-import { Container, Divider } from "@material-ui/core";
+import { Button, Container, Divider } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { getBlog } from "../../actions/blog";
+import { deleteBlog, updateBlog } from "../../actions/blogs";
 import { REMOVE_BLOG } from "../../actionTypes";
 import BlogTag from "./BlogTag/BlogTag";
 import draftToHtml from "draftjs-to-html";
@@ -20,6 +21,7 @@ const Blog = () => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const location = useLocation();
+	const history = useHistory();
 	useEffect(() => {
 		console.log("FETCH HIT");
 		dispatch(getBlog(searchString));
@@ -51,6 +53,12 @@ const Blog = () => {
 		},
 	};
 
+	const deleteThisBlog = () => {
+		dispatch(deleteBlog(blog._id));
+		history.push("/blog");
+	};
+
+	const editThisBlog = () => {};
 	return (
 		<div>
 			{blog ? (
@@ -69,6 +77,14 @@ const Blog = () => {
 								<BlogTag key={tag} tag={tag} />
 							))}
 						</div>
+					</div>
+					<div>
+						<Button onClick={editThisBlog} color='primary'>
+							Edit
+						</Button>
+						<Button onClick={deleteThisBlog} color='secondary'>
+							Delete
+						</Button>
 					</div>
 					<Divider />
 					<div className={classes.blogContent}>{parse(draftToHtml(JSON.parse(blog.content)), options)}</div>

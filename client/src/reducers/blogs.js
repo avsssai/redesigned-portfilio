@@ -1,9 +1,4 @@
-import {
-	FETCHING_BEGIN,
-	FETCHING_END,
-	FETCH_ALL,
-	ADD_BLOG,
-} from "../actionTypes";
+import { FETCHING_BEGIN, FETCHING_END, FETCH_ALL, ADD_BLOG, DELETE_BLOG, UPDATE_BLOG } from "../actionTypes";
 
 let initialState = {
 	loading: false,
@@ -25,6 +20,24 @@ const blogs = (state = initialState, action) => {
 				blogs: [...state.blogs, action.payload],
 				loading: false,
 			};
+		case DELETE_BLOG:
+			const blogsAfterDelete = state.blogs.blogs.filter((blog) => blog._id !== action.payload);
+			console.log("DELETED?", state.blogs, action.payload);
+			return {
+				...state,
+				blogsAfterDelete,
+				loading: false,
+			};
+		case UPDATE_BLOG:
+			const blogsAfterUpdate = state.blogs.filter((blog) =>
+				blog._id === action.payload._id ? action.payload : blog
+			);
+			return {
+				...state,
+				blogs: blogsAfterUpdate,
+				loading: false,
+			};
+
 		default:
 			return state;
 	}

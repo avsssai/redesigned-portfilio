@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 import Blog from "../models/BlogModel.js";
 import { addContact } from "../utils/mailChimp.js";
 
@@ -36,7 +37,11 @@ export const getBlog = async (req, res) => {
 export const addBlog = async (req, res) => {
 	try {
 		const blog = req.body;
-		const newBlog = new Blog(blog);
+		const blogToSave = {
+			...blog,
+			author: req.userId,
+		};
+		const newBlog = new Blog(blogToSave);
 		await newBlog.save();
 		res.status(201).json({
 			message: "New Blog created successfully.",
@@ -53,7 +58,64 @@ export const sendEmail = async (req, res) => {
 		console.log("hit", data);
 		res.send("email sending successful.");
 	} catch (error) {
-		console.log(error);
+		res.status(400).json({
+			message: "Error sending email",
+			error,
+		});
+	}
+};
+
+export const updateBlog = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const updatedBlog = req.body;
+		const blog = await Blog.findById(id);
+		if (!mongoose.Types.ObjectId.isValid(id)) {
+			return res.status(404).send("No post with that ID.");
+		}
+		if (req.userId !== blog.author) {
+			res.status(403).json({
+				message: "You are not the author of the post.",
+			});
+		}
+
+		await Blog.findByIdAndUpdate(id, updatedBlog, {
+			new: true,
+		});
+		res.status(201).json({
+			message: "Updated blog successfully.",
+			updatedBlog,
+		});
+	} catch (error) {
+		res.status(400).json({
+			message: "Error Updating blog.",
+			error,
+		});
+	}
+};
+
+export const deleteBlog = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const blog = await Blog.findById(id);
+		if (!mongoose.Types.ObjectId.isValid(id)) {
+			return res.status(404).send("No post with that ID.");
+		}
+		if (req.userId !== blog.author) {
+			res.status(403).json({
+				message: "You are not the author of the post.",
+			});
+		}
+
+		await Blog.findByIdAndDelete(id);
+		res.status(201).json({
+			message: "Deleted blog successfully.",
+		});
+	} catch (error) {
+		res.status(400).json({
+			message: "Error Deleting blog.",
+			error,
+		});
 	}
 };
 

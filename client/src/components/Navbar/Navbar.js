@@ -2,20 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Container, Grid, Button } from "@material-ui/core";
 import Menu from "../Menu/Menu";
 import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./styles.css";
+import decode from "jwt-decode";
 
 import useStyles from "./styles.js";
 import { useDispatch } from "react-redux";
 import { GOOGLE_LOGOUT } from "../../actionTypes";
+
 const Navbar = ({ home }) => {
 	const classes = useStyles();
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const location = useLocation();
+	const currentUser = useSelector((state) => state.auth);
+
 	useEffect(() => {
+		const token = user?.token;
+		if (token) {
+			const decodedToken = decode(token);
+			console.log(decodedToken.exp * 1000, new Date().getTime());
+			if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+		}
 		setUser(JSON.parse(localStorage.getItem("profile")));
-	}, [user, location]);
+	}, [currentUser, location]);
 
 	const logout = () => {
 		dispatch({ type: GOOGLE_LOGOUT });
@@ -45,7 +56,9 @@ const Navbar = ({ home }) => {
 							</div>
 							{user ? (
 								<div className={classes.nav}>
-									<Button onClick={logout}>Logout</Button>
+									<Link to='/' onClick={logout}>
+										Logout
+									</Link>
 								</div>
 							) : (
 								""
@@ -53,7 +66,7 @@ const Navbar = ({ home }) => {
 						</div>
 					</div>
 					<div className={classes.belowSmall}>
-						<Menu />
+						<Menu logout={logout} />
 					</div>
 				</Grid>
 			</Grid>
