@@ -9,7 +9,8 @@ const styles = makeStyles((theme) => ({
 		color: theme.palette.secondary.main,
 		fontSize: theme.typography.h3.fontSize,
 		[theme.breakpoints.down("sm")]: {
-			fontSize: theme.typography.h4.fontSize,
+			fontSize: theme.typography.h3.fontSize,
+			textAlign: "center",
 		},
 	},
 	blogDetails: {
@@ -18,10 +19,18 @@ const styles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "space-between",
 		alignItems: "baseline",
+		[theme.breakpoints.down("xs")]: {
+			alignItems: "center",
+			flexDirection: "column",
+			alignItems: "center",
+			marginTop: theme.spacing(1),
+			marginBottom: theme.spacing(2),
+		},
 	},
 	goBack: {
 		textAlign: "center",
 		marginBottom: theme.spacing(5),
+		color: theme.palette.grey["400"],
 
 		"& a": {
 			color: "inherit",
@@ -33,11 +42,22 @@ const styles = makeStyles((theme) => ({
 			paddingBottom: theme.spacing(0.5),
 			borderBottom: `1px dotted ${theme.palette.secondary.main}`,
 		},
+		[theme.breakpoints.down("sm")]: {
+			marginBottom: theme.spacing(2),
+			// fontSize: theme.typography.body2.fontSize,
+			fontSize: "14px",
+		},
 	},
 	blogDate: {
 		alignSelf: "baseline",
-		color: theme.palette.grey["200"],
+		color: theme.palette.grey["400"],
 		fontWeight: theme.typography.fontWeightBold,
+		[theme.breakpoints.down("xs")]: {
+			width: "100%",
+			textAlign: "center",
+			fontSize: theme.typography.body2.fontSize,
+			marginBottom: theme.spacing(1),
+		},
 	},
 	blogTags: {
 		display: "flex",

@@ -11,7 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
 
-export default function MenuListComposition({ logout }) {
+export default function MenuListComposition({ logout, user }) {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const anchorRef = React.useRef(null);
@@ -75,11 +75,13 @@ export default function MenuListComposition({ logout }) {
 										<MenuItem onClick={handleClose} className={classes.link}>
 											<Link to='/blog'>Blog</Link>
 										</MenuItem>
-										<MenuItem onClick={handleClose} className={classes.link}>
-											<Link to='/' onClick={logout}>
-												Logout
-											</Link>
-										</MenuItem>
+										{user && (
+											<MenuItem onClick={handleClose} className={classes.link}>
+												<Link to='/' onClick={logout}>
+													Logout
+												</Link>
+											</MenuItem>
+										)}
 									</MenuList>
 								</ClickAwayListener>
 							</Paper>

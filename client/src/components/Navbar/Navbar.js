@@ -66,7 +66,7 @@ const Navbar = ({ home }) => {
 						</div>
 					</div>
 					<div className={classes.belowSmall}>
-						<Menu logout={logout} />
+						<Menu logout={logout} user={user} />
 					</div>
 				</Grid>
 			</Grid>
