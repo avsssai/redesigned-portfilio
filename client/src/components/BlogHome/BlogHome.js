@@ -26,7 +26,7 @@ const BlogHome = () => {
 						{!blogs
 							? "Loading..."
 							: blogs.map((blog) => (
-									<Grid item xs={12} md={8} key={blog.searchString}>
+									<Grid item xs={12} md={8} key={blog._id}>
 										<Paper className={classes.paper}>
 											<Grid container justify='space-between' alignItems='stretch' spacing={2}>
 												<Grid item xs={11} sm={8}>

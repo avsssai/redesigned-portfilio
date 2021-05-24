@@ -73,8 +73,13 @@ export const updateBlog = async (req, res) => {
 		if (!mongoose.Types.ObjectId.isValid(id)) {
 			return res.status(404).send("No post with that ID.");
 		}
+		if (!req.userId) {
+			res.status(401).json({
+				message: "Unauthorized, please login",
+			});
+		}
 		if (req.userId !== blog.author) {
-			res.status(403).json({
+			res.status(401).json({
 				message: "You are not the author of the post.",
 			});
 		}
@@ -101,14 +106,21 @@ export const deleteBlog = async (req, res) => {
 		if (!mongoose.Types.ObjectId.isValid(id)) {
 			return res.status(404).send("No post with that ID.");
 		}
+		// console.log(req.userId);
+		// if (!req.userId) {
+		// 	return res.status(403).json({
+		// 		message: "You are not the author of the post.",
+		// 	});
+		// }
+		console.log(req.userId, blog.author);
 		if (req.userId !== blog.author) {
-			res.status(403).json({
+			return res.status(403).json({
 				message: "You are not the author of the post.",
 			});
 		}
 
 		await Blog.findByIdAndDelete(id);
-		res.status(201).json({
+		return res.status(201).json({
 			message: "Deleted blog successfully.",
 		});
 	} catch (error) {

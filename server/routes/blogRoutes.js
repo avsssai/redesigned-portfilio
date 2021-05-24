@@ -15,7 +15,7 @@ router.get("/all", allBlogs);
 router.get("/blog/:searchString", getBlog);
 router.post("/blog", auth, addBlog);
 router.patch("/blog/:id", auth, updateBlog);
-router.delete("/blog/:id", deleteBlog);
+router.delete("/blog/:id", auth, deleteBlog);
 router.post("/contact", sendEmail);
 router.post("/subscribe", subscribeToEmail);
 
