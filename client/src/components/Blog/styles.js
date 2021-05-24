@@ -48,6 +48,10 @@ const styles = makeStyles((theme) => ({
 			fontSize: "14px",
 		},
 	},
+	editLink: {
+		...theme.button,
+		color: theme.palette.secondary.main,
+	},
 	blogDate: {
 		alignSelf: "baseline",
 		color: theme.palette.grey["400"],

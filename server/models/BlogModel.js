@@ -11,7 +11,7 @@ const BlogSchema = mongoose.Schema({
 	},
 	author: String,
 	searchString: String,
-	tags: [String],
+	tags: String,
 });
 
 const BlogModel = mongoose.model("Blog", BlogSchema);

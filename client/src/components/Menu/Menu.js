@@ -66,9 +66,9 @@ export default function MenuListComposition({ logout, user }) {
 							<Paper>
 								<ClickAwayListener onClickAway={handleClose}>
 									<MenuList autoFocusItem={open} id='menu-list-grow' onKeyDown={handleListKeyDown}>
-										<MenuItem onClick={handleClose} className={classes.link}>
+										{/* <MenuItem onClick={handleClose} className={classes.link}>
 											<Link to='/contact'>Contact</Link>
-										</MenuItem>
+										</MenuItem> */}
 										<MenuItem onClick={handleClose} className={classes.link}>
 											<Link to='/my-work'>My Work</Link>
 										</MenuItem>

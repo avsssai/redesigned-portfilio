@@ -19,6 +19,10 @@ const theme = createMuiTheme({
 			fontSize: "16px",
 		},
 	},
+	link: {
+		textDecoration: "none",
+		color: "inherit",
+	},
 });
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));

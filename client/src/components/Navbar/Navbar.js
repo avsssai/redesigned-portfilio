@@ -37,40 +37,38 @@ const Navbar = ({ home }) => {
 		return null;
 	}
 	return (
-		<Container fluid='true'>
-			<Grid container>
-				<Grid item xs={12} className={classes.navbar}>
-					<div className={classes.iconName}>
-						<Link to='/'>Siva Sesha Sai</Link>
-					</div>
-					<div className={classes.aboveSmall}>
-						<div className={classes.navCluster}>
-							<div className={classes.nav}>
-								<NavLink to='/contact'>Contact</NavLink>
-							</div>
-							<div className={classes.nav}>
-								<NavLink to='/my-work'>My Work</NavLink>
-							</div>
-							<div className={classes.nav}>
-								<NavLink to='/blog'>Blog</NavLink>
-							</div>
-							{user ? (
-								<div className={classes.nav}>
-									<Link to='/' onClick={logout}>
-										Logout
-									</Link>
-								</div>
-							) : (
-								""
-							)}
+		<Grid container>
+			<Grid item xs={12} className={classes.navbar}>
+				<div className={classes.iconName}>
+					<Link to='/'>Siva Sesha Sai</Link>
+				</div>
+				<div className={classes.aboveSmall}>
+					<div className={classes.navCluster}>
+						{/* <div className={classes.nav}>
+							<NavLink to='/contact'>Contact</NavLink>
+						</div> */}
+						<div className={classes.nav}>
+							<NavLink to='/my-work'>My Work</NavLink>
 						</div>
+						<div className={classes.nav}>
+							<NavLink to='/blog'>Blog</NavLink>
+						</div>
+						{user ? (
+							<div className={classes.nav}>
+								<Link to='/' onClick={logout}>
+									Logout
+								</Link>
+							</div>
+						) : (
+							""
+						)}
 					</div>
-					<div className={classes.belowSmall}>
-						<Menu logout={logout} user={user} />
-					</div>
-				</Grid>
+				</div>
+				<div className={classes.belowSmall}>
+					<Menu logout={logout} user={user} />
+				</div>
 			</Grid>
-		</Container>
+		</Grid>
 	);
 };
 

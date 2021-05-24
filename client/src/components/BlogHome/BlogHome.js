@@ -5,15 +5,19 @@ import { getAllBlogs } from "../../actions/blogs";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import useStyles from "./styles";
+import BlogTag from "../Blog/BlogTag/BlogTag";
+import { useLocation } from "react-router-dom";
 
 const BlogHome = () => {
 	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getAllBlogs());
-	}, []);
+	const location = useLocation();
 	const classes = useStyles();
 	const blogs = useSelector((state) => state.blogs.blogs.blogs);
 	const blog = useSelector((state) => state.blog.blog.blog);
+	useEffect(() => {
+		dispatch(getAllBlogs());
+	}, []);
+
 	console.log("BLOG IN USE", blog);
 	return (
 		<div className={classes.blogHome}>
@@ -29,13 +33,17 @@ const BlogHome = () => {
 									<Grid item xs={12} md={8} key={blog._id}>
 										<Paper className={classes.paper}>
 											<Grid container justify='space-between' alignItems='stretch' spacing={2}>
-												<Grid item xs={11} sm={8}>
+												<Grid item xs={12} sm={8}>
 													<div className={classes.blogTitle}>
 														<Link to={`/blog/${blog.searchString}`}>{blog.title}</Link>
 													</div>
 												</Grid>
-												<Grid item xs={11} sm={3} className={classes.blogInfo}>
-													<div className={classes.blogTag}>{blog.tags[1]}</div>
+												<Grid container item xs={12} sm={3} className={classes.blogInfo}>
+													<div className={classes.blogTag}>
+														{blog.tags.split(",").map((tag) => (
+															<BlogTag key={tag} tag={tag} />
+														))}
+													</div>
 													<div className={classes.blogDate}>
 														{moment(blog.date).fromNow()}
 													</div>

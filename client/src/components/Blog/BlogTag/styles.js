@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 const styles = makeStyles((theme) => ({
 	tag: {
-		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
 		padding: theme.spacing(1),
 		borderRadius: theme.shape.borderRadius,
 		fontWeight: theme.typography.fontWeightBold,

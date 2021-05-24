@@ -9,7 +9,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Button, Container, Divider, TextField, Typography } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
-import { addBlog } from "../../actions/blogs";
+import { addBlog, updateBlog } from "../../actions/blogs";
 import { useHistory } from "react-router-dom";
 import { GOOGLE_LOGIN, GOOGLE_LOGOUT } from "../../actionTypes";
 import { useLocation } from "react-router-dom";
@@ -20,7 +20,6 @@ const MyEditor = (props) => {
 	const [editorContent, setEditorContent] = useState("");
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 	const location = useLocation();
-
 	const currentUser = useSelector((state) => state.auth);
 
 	useEffect(() => {
@@ -41,7 +40,7 @@ const MyEditor = (props) => {
 	const [formData, setFormData] = useState({
 		title: "",
 		searchString: "",
-		tags: [],
+		tags: "",
 	});
 
 	const history = useHistory();
@@ -50,14 +49,33 @@ const MyEditor = (props) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		// console.log("content2", ContentState.createFromBlockArray(JSON.parse(loadedBlog?.content)));
+		if (location.state !== undefined) {
+			const loadedBlog = location.state;
+			console.log(loadedBlog);
+			const contentLoded = JSON.parse(loadedBlog?.content);
+			const loadedHtml = draftToHtml(contentLoded);
+			const loadedDraft = htmlToDraft(loadedHtml);
+			const loadedContentState = ContentState.createFromBlockArray(loadedDraft.contentBlocks);
+			const loadedEditorState = EditorState.createWithContent(loadedContentState);
+			setFormData({
+				title: loadedBlog.title,
+				searchString: loadedBlog.searchString,
+				tags: loadedBlog.tags,
+			});
+			return setEditorContent(loadedEditorState);
+
+			// console.log(draftToHtml(convertToRaw(loadedContentState)));
+		}
 		const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
 		const contentBlock = htmlToDraft(html);
 		if (contentBlock) {
 			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 			const editorState = EditorState.createWithContent(contentState);
+			console.log("EDITOR 2", editorState);
 			setEditorContent(editorState);
 		}
-	}, []);
+	}, [location]);
 
 	const onEditorStateChange = (editorState) => {
 		setEditorContent(editorState);
@@ -73,12 +91,27 @@ const MyEditor = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const content = JSON.stringify(logContent());
-		const fullFormData = {
-			...formData,
-			tags: formData.tags.split(","),
-			content,
-		};
-		dispatch(addBlog(fullFormData));
+
+		if (location.state !== undefined) {
+			const updatedFormData = {
+				...formData,
+				tags: formData.tags,
+				content,
+			};
+
+			// return dispatch(updateBlog(fullFormData));
+			console.log("UPDATE BLOG", updatedFormData);
+			console.log("UPDATE BLOG id", location.state._id);
+			dispatch(updateBlog(location.state._id, updatedFormData));
+		} else {
+			const fullFormData = {
+				...formData,
+				tags: formData.tags,
+				content,
+			};
+
+			dispatch(addBlog(fullFormData));
+		}
 		history.push("/blog");
 	};
 
@@ -123,7 +156,7 @@ const MyEditor = (props) => {
 				) : (
 					<form onSubmit={handleSubmit} className={classes.form}>
 						<Typography variant='h4' color='secondary'>
-							Add a New Blog
+							{location.state === undefined ? "Add a New Blog" : `Edit the Blog`}
 						</Typography>
 
 						<Divider orientation='horizontal' className={classes.divider} />
@@ -189,7 +222,7 @@ const MyEditor = (props) => {
 						/>
 						<div>
 							<Button onClick={logContent} variant='contained' type='submit' color='secondary'>
-								Submit
+								{location.state === undefined ? "Submit" : `Edit`}
 							</Button>
 						</div>
 					</form>

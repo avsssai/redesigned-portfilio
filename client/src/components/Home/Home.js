@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Container, Button, Grid, Menu } from "@material-ui/core";
+import { Container, Button, Grid, Menu, Link as Anchor } from "@material-ui/core";
 import useStyles from "./styles";
-import { NavLink, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const Home = () => {
 	const [blogs, setBlogs] = useState([]);
 	const classes = useStyles();
 	return (
 		<div id='main'>
 			<div className={classes.main}>
-				<Container fixed>
+				<Container fixed maxWidth='lg'>
 					<div className={classes.intro}>Hi👋, I am Siva,</div>
 					<div className={classes.job}>I make websites.</div>
 					<div className={classes.subText}>
@@ -27,7 +26,13 @@ const Home = () => {
 							</Button>
 						</Link>
 						<Button variant='contained' color='secondary' size='medium' className={classes.homePageButton}>
-							Hire me
+							<Anchor
+								href='https://drive.google.com/file/d/17nHLMAt0Z4gwLAM0xO8l5d-Ye4-npYao/view?usp=sharing'
+								className={classes.buttonLink}
+								rel='noopener noreferrer'
+								target='_blank'>
+								Resume
+							</Anchor>
 						</Button>
 					</div>
 				</Container>
@@ -40,6 +45,19 @@ const Home = () => {
 						</div>
 						<div className={classes.blogTitleContainer}>
 							I write a blog daily, subscribe to get weekly updates!
+						</div>
+					</Container>
+					<Container fixed className={classes.twitter}>
+						<div className={classes.subscribe}>
+							<Anchor
+								href='https://twitter.com/shiva_seshasai'
+								className={classes.anchor}
+								target='_blank'>
+								Follow me on Twitter.
+							</Anchor>
+						</div>
+						<div className={classes.blogTitleContainer}>
+							I post some interesting content, well you be the judge of that.
 						</div>
 					</Container>
 				</div>

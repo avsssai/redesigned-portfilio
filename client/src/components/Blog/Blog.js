@@ -24,6 +24,7 @@ const Blog = () => {
 	const classes = useStyles();
 	const location = useLocation();
 	const history = useHistory();
+
 	useEffect(() => {
 		console.log("FETCH HIT");
 		dispatch(getBlog(searchString));
@@ -33,7 +34,9 @@ const Blog = () => {
 			dispatch({ type: REMOVE_BLOG });
 		};
 	}, [location]);
+
 	const blog = useSelector((state) => state.blog.blog.blog);
+
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
 	const currentUser = useSelector((state) => state.auth);
@@ -93,16 +96,21 @@ const Blog = () => {
 					<div className={classes.blogDetails}>
 						<div className={classes.blogDate}>Published {moment(blog.date).fromNow()}</div>
 						<div className={classes.blogTags}>
-							{blog.tags.map((tag) => (
+							{blog.tags.split(",").map((tag) => (
 								<BlogTag key={tag} tag={tag} />
 							))}
 						</div>
 					</div>
 					{user && (
 						<div>
-							<Button onClick={editThisBlog} color='primary'>
+							<Link
+								to={{
+									pathname: "/editor",
+									state: blog,
+								}}
+								className={classes.editLink}>
 								Edit
-							</Button>
+							</Link>
 							<Button onClick={deleteThisBlog} color='secondary'>
 								Delete
 							</Button>

@@ -29,7 +29,7 @@ const blogs = (state = initialState, action) => {
 				loading: false,
 			};
 		case UPDATE_BLOG:
-			const blogsAfterUpdate = state.blogs.filter((blog) =>
+			const blogsAfterUpdate = state.blogs.blogs.filter((blog) =>
 				blog._id === action.payload._id ? action.payload : blog
 			);
 			return {

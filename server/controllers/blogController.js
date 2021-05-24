@@ -75,7 +75,7 @@ export const updateBlog = async (req, res) => {
 		}
 		if (!req.userId) {
 			res.status(401).json({
-				message: "Unauthorized, please login",
+				message: "Unauthorized, please login.",
 			});
 		}
 		if (req.userId !== blog.author) {
@@ -84,9 +84,13 @@ export const updateBlog = async (req, res) => {
 			});
 		}
 
-		await Blog.findByIdAndUpdate(id, updatedBlog, {
-			new: true,
-		});
+		await Blog.findByIdAndUpdate(
+			id,
+			{ ...updatedBlog },
+			{
+				new: true,
+			}
+		);
 		res.status(201).json({
 			message: "Updated blog successfully.",
 			updatedBlog,

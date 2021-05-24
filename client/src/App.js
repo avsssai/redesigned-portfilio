@@ -18,7 +18,7 @@ const App = () => {
 		<>
 			<Router>
 				<Navbar />
-				<Container maxWidth='lg' className={classes.body}>
+				<div>
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route exact path='/editor' component={MyEditor} />
@@ -28,7 +28,7 @@ const App = () => {
 						<Route exact path='/blog' component={BlogHome} />
 						<Route exact path='/blog/:searchString' component={Blog} />
 					</Switch>
-				</Container>
+				</div>
 				<Footer />
 			</Router>
 		</>

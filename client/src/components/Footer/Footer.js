@@ -9,7 +9,7 @@ const Footer = ({ home }) => {
 		return null;
 	}
 	return (
-		<Container className={classes.footer}>
+		<Container className={classes.footer} fixed>
 			<Grid container direction='row' justify='center' alignItems='center'>
 				<Grid item>
 					<div className={classes.iconName}>

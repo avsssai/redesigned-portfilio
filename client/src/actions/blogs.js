@@ -39,9 +39,10 @@ export const deleteBlog = (id) => async (dispatch) => {
 		console.log(error);
 	}
 };
-export const updateBlog = (id) => async (dispatch) => {
+export const updateBlog = (id, formData) => async (dispatch) => {
 	try {
-		dispatch({ type: UPDATE_BLOG, payload: id });
+		const { data } = await api.updateBlog(id, formData);
+		dispatch({ type: UPDATE_BLOG, payload: data });
 	} catch (error) {
 		console.log(error);
 	}

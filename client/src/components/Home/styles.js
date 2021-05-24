@@ -57,6 +57,9 @@ const styles = makeStyles((theme) => ({
 		[theme.breakpoints.down("xs")]: {
 			marginRight: theme.spacing(1),
 		},
+		"& a:hover": {
+			textDecoration: "none",
+		},
 	},
 	highLight: {
 		color: theme.palette.grey["200"],
@@ -82,10 +85,14 @@ const styles = makeStyles((theme) => ({
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h6.fontSize,
 		},
-		"& a": {
+		"& a, & a:hover": {
 			color: "inherit",
 			textDecoration: "none",
 		},
+	},
+	twitter: {
+		marginTop: theme.spacing(3),
+		marginBottom: theme.spacing(3),
 	},
 }));
 
