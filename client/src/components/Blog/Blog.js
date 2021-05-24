@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { getBlog } from "../../actions/blog";
-import { deleteBlog, updateBlog } from "../../actions/blogs";
+import { deleteBlog } from "../../actions/blogs";
 import { GOOGLE_LOGOUT, REMOVE_BLOG } from "../../actionTypes";
 import BlogTag from "./BlogTag/BlogTag";
 import draftToHtml from "draftjs-to-html";

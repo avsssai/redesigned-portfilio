@@ -20,7 +20,9 @@ const MyEditor = (props) => {
 	const [editorContent, setEditorContent] = useState("");
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 	const location = useLocation();
+
 	const currentUser = useSelector((state) => state.auth);
+
 	useEffect(() => {
 		const token = user?.token;
 		if (token) {
@@ -41,6 +43,7 @@ const MyEditor = (props) => {
 		searchString: "",
 		tags: [],
 	});
+
 	const history = useHistory();
 	const classes = useStyles();
 
@@ -91,9 +94,11 @@ const MyEditor = (props) => {
 		console.log("TOKEN", token);
 		console.log("PROFILE", result);
 	};
+
 	const googleFailure = () => {
 		console.log("Google login failed.");
 	};
+
 	return (
 		<div className='main-container'>
 			<Container maxWidth='md'>
