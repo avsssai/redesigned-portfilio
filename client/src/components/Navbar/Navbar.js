@@ -22,7 +22,6 @@ const Navbar = ({ home }) => {
 		const token = user?.token;
 		if (token) {
 			const decodedToken = decode(token);
-			console.log(decodedToken.exp * 1000, new Date().getTime());
 			if (decodedToken.exp * 1000 < new Date().getTime()) logout();
 		}
 		setUser(JSON.parse(localStorage.getItem("profile")));

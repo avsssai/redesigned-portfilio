@@ -49,10 +49,8 @@ const MyEditor = (props) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// console.log("content2", ContentState.createFromBlockArray(JSON.parse(loadedBlog?.content)));
 		if (location.state !== undefined) {
 			const loadedBlog = location.state;
-			console.log(loadedBlog);
 			const contentLoded = JSON.parse(loadedBlog?.content);
 			const loadedHtml = draftToHtml(contentLoded);
 			const loadedDraft = htmlToDraft(loadedHtml);
@@ -64,15 +62,12 @@ const MyEditor = (props) => {
 				tags: loadedBlog.tags,
 			});
 			return setEditorContent(loadedEditorState);
-
-			// console.log(draftToHtml(convertToRaw(loadedContentState)));
 		}
 		const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
 		const contentBlock = htmlToDraft(html);
 		if (contentBlock) {
 			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 			const editorState = EditorState.createWithContent(contentState);
-			console.log("EDITOR 2", editorState);
 			setEditorContent(editorState);
 		}
 	}, [location]);
@@ -83,7 +78,6 @@ const MyEditor = (props) => {
 
 	const logContent = () => {
 		const contentInRaw = convertToRaw(editorContent.getCurrentContent());
-		console.log(contentInRaw);
 		return contentInRaw;
 		// addBlog(contentInRaw);
 	};
@@ -99,9 +93,6 @@ const MyEditor = (props) => {
 				content,
 			};
 
-			// return dispatch(updateBlog(fullFormData));
-			console.log("UPDATE BLOG", updatedFormData);
-			console.log("UPDATE BLOG id", location.state._id);
 			dispatch(updateBlog(location.state._id, updatedFormData));
 		} else {
 			const fullFormData = {
@@ -120,12 +111,7 @@ const MyEditor = (props) => {
 		const result = res?.profileObj;
 		try {
 			dispatch({ type: GOOGLE_LOGIN, payload: { token, result } });
-			console.log("tokens", { token, result });
-		} catch (error) {
-			console.log(error);
-		}
-		console.log("TOKEN", token);
-		console.log("PROFILE", result);
+		} catch (error) {}
 	};
 
 	const googleFailure = () => {

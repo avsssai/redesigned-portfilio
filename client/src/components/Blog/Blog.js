@@ -28,11 +28,8 @@ const Blog = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		console.log("FETCH HIT");
 		dispatch(getBlog(searchString));
 		return () => {
-			console.log("REMOVE HIT");
-
 			dispatch({ type: REMOVE_BLOG });
 		};
 	}, [location]);

@@ -21,7 +21,6 @@ const BlogHome = () => {
 		dispatch(getAllBlogs());
 	}, []);
 
-	console.log("BLOG IN USE", blog);
 	return (
 		<div className={classes.blogHome}>
 			<Container>

@@ -22,7 +22,6 @@ const blogs = (state = initialState, action) => {
 			};
 		case DELETE_BLOG:
 			const blogsAfterDelete = state.blogs.blogs.filter((blog) => blog._id !== action.payload);
-			console.log("DELETED?", state.blogs, action.payload);
 			return {
 				...state,
 				blogsAfterDelete,

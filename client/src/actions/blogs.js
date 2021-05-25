@@ -5,7 +5,6 @@ import * as api from "../api";
 export const getAllBlogs = () => async (dispatch) => {
 	try {
 		const { data } = await api.getAll();
-		console.log("hit", data);
 		dispatch({ type: FETCH_ALL, payload: data });
 	} catch (error) {
 		console.log(error);
@@ -32,7 +31,6 @@ export const addBlog = (formData) => async (dispatch) => {
 
 export const deleteBlog = (id) => async (dispatch) => {
 	try {
-		console.log("DELETE ACTION HIT");
 		await api.deleteBlog(id);
 		dispatch({ type: DELETE_BLOG, payload: id });
 	} catch (error) {
