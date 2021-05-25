@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import useStyles from "./styles";
 import "./styles.css";
 import * as api from "../../api";
+import useDocumentTitle from "../../useDocumentTitle";
 
 const initialState = {
 	firstName: "",
@@ -14,6 +15,8 @@ const initialState = {
 };
 
 const Subscribe = () => {
+	useDocumentTitle(`Subscribe to my Blog.`);
+
 	const classes = useStyles();
 	const [formData, setFormData] = useState({
 		firstName: "",

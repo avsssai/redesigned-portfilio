@@ -70,6 +70,7 @@ const styles = makeStyles((theme) => ({
 	blogContent: {
 		color: theme.palette.grey["200"],
 		fontFamily: theme.typography.fontFamily,
+		minHeight: "40vh",
 	},
 }));
 

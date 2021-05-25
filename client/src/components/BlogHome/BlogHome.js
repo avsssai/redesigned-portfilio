@@ -7,8 +7,11 @@ import moment from "moment";
 import useStyles from "./styles";
 import BlogTag from "../Blog/BlogTag/BlogTag";
 import { useLocation } from "react-router-dom";
+import useDocumentTitle from "../../useDocumentTitle";
 
 const BlogHome = () => {
+	useDocumentTitle(`Siva's Blog`);
+
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const classes = useStyles();

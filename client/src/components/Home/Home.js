@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Container, Button, Grid, Menu, Link as Anchor } from "@material-ui/core";
 import useStyles from "./styles";
 import { Link } from "react-router-dom";
+import useDocumentTitle from "../../useDocumentTitle";
+
 const Home = () => {
 	const [blogs, setBlogs] = useState([]);
+
 	const classes = useStyles();
 	return (
 		<div id='main'>

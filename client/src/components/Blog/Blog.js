@@ -13,6 +13,7 @@ import moment from "moment";
 import Prism from "prismjs";
 import { useLocation } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import useDocumentTitle from "../../useDocumentTitle";
 
 import decode from "jwt-decode";
 
@@ -20,6 +21,7 @@ import "./prism.css";
 
 const Blog = () => {
 	const { searchString } = useParams();
+	useDocumentTitle(`${searchString} - Siva's Blog`);
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const location = useLocation();
